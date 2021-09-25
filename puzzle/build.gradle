@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "org.opencv.samples.puzzle15"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 301
+        versionName "3.01"
+    }
+    sourceSets {
+        main {
+            java.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            res.srcDirs = ['res']
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+    splits {
+        // Configures multiple APKs based on ABI.
+        abi {
+            // Enables building multiple APKs per ABI.
+            enable true
+            // By default all ABIs are included, so use reset() and include to specify that we only
+            // want APKs, reset() resets the list of ABIs that Gradle should create APKs for to none.
+            //reset()
+            // Specifies a list of ABIs that Gradle should create APKs for.
+            //include "x86", "x86_64","mips64","mips","armeabi-v7a","armeabi","arm64-v8a"
+
+            // Specifies that we do not want to also generate a universal APK that includes all ABIs.
+            universalApk true
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    releaseImplementation files('libs/opencv-release.aar')
+    debugImplementation files('libs/opencv-debug.aar')
+}
+
+

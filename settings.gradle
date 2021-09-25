@@ -1,0 +1,6 @@
+//rootProject.name = "My Application"
+include ':sdk'
+include ':puzzle',':camera-calibration',':image-manipulations'
+include ':color-blob-detection',':face-detection'
+include ':tutorial-1-camerapreview',':tutorial-2-mixedprocessing',':tutorial-3-cameracontrol'
+
